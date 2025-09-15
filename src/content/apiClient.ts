@@ -1,4 +1,4 @@
-import { CategoryResponse, CategoryItem } from "../types/esa.ts";
+import { CategoryResponse } from "../types/esa.ts";
 import { log } from "../utils/log.ts";
 
 /**
@@ -23,11 +23,11 @@ export async function fetchCategoryHierarchy(
     }
 
     const data = await response.json();
-    log(`API returned data for path ${targetPath}:`, data);
+    log(`API returned data for path ${targetPath}: ${data}`);
 
     return data.children || [];
   } catch (error) {
-    console.error(`Failed to fetch categories for path ${path}:`, error);
+    console.error(`Failed to fetch categories for path ${path}: ${error}`);
     throw error;
   }
 }

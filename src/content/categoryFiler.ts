@@ -6,7 +6,7 @@ import { log } from "../utils/log.ts";
  */
 function createCategoryFilerHTML(categories: any): string {
   const categoryItems = categories
-    .map((cat: any, index: number) => {
+    .map((cat: any) => {
       // カテゴリ名を適切にエスケープし、数字のみのカテゴリにも対応
       const categoryName = String(cat.name).trim();
       const displayName = categoryName || "(名前なし)";
@@ -125,10 +125,10 @@ export async function initCategoryFiler(url: string): Promise<void> {
   try {
     const currentPath = getCurrentCategoryPath(url);
     const categoryItems = await fetchCategoryHierarchy(currentPath);
-    log("Fetched category data:", categoryItems);
+    log(`Fetched category data: ${categoryItems}`);
 
     // 子カテゴリがない場合は表示しない
-    if (!categoryItems || categoryItems.length === 0) {
+    if (!categoryItems || categoryItems.children.length === 0) {
       return;
     }
 
