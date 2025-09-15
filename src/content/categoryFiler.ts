@@ -128,7 +128,7 @@ export async function initCategoryFiler(url: string): Promise<void> {
     log(`Fetched category data: ${categoryItems}`);
 
     // 子カテゴリがない場合は表示しない
-    if (!categoryItems || categoryItems.children.length === 0) {
+    if (!categoryItems || categoryItems.length === 0) {
       return;
     }
 

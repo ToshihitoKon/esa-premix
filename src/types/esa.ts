@@ -5,14 +5,9 @@ export interface CategoryItem {
   children?: "lazy" | CategoryItem[];
 }
 
-export interface CategoryResponse {
-  children: CategoryItem[];
-}
-
 export interface PostItem {
   id: number;
   title: string;
   url: string;
   category_path: string;
 }
-

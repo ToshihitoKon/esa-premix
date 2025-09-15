@@ -1,4 +1,4 @@
-import { CategoryResponse } from "../types/esa.ts";
+import { CategoryItem } from "../types/esa.ts";
 import { log } from "../utils/log.ts";
 
 /**
@@ -6,7 +6,7 @@ import { log } from "../utils/log.ts";
  */
 export async function fetchCategoryHierarchy(
   path: string,
-): Promise<CategoryResponse> {
+): Promise<CategoryItem[]> {
   try {
     const targetPath = path || "/";
     const encodedPath = encodeURIComponent(targetPath);
