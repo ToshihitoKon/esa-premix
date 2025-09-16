@@ -1,11 +1,12 @@
 {
   "name": "esa-premix",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "release-tag": "git tag v$(cat ./package.json | jq -r .version)"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.3",
