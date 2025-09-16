@@ -20,12 +20,13 @@ function isSkipPreviewButton(anchor: HTMLAnchorElement): boolean {
     href.includes("/revisions/") ||
     // 記事ページの Header 要素に自動でつくリンク
     anchor.classList.contains("anchor") ||
+    // メンバーアイコン
+    anchor.querySelector("img")?.classList.contains("member_emoji") ||
     // 添付ファイル
     href.includes("/uploads/")
   ) {
     return true;
   }
-
   return false;
 }
 
@@ -133,7 +134,10 @@ function handleEscapeKey(event: KeyboardEvent) {
     const previewWindow = document.querySelector(
       `.${preview_window_class}`,
     ) as HTMLElement;
-    if (previewWindow && previewWindow.classList.contains(preview_window_active_class)) {
+    if (
+      previewWindow &&
+      previewWindow.classList.contains(preview_window_active_class)
+    ) {
       hidePreviewWindow();
     }
   }
