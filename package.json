@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "release-tag": "git tag v$(cat ./package.json | jq -r .version)"
+    "release-tag": "git tag v$(cat ./package.json | jq -r .version) -f"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.3",
