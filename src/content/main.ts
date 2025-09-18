@@ -2,28 +2,7 @@ import { initCategoryFiler } from "./categoryFiler.ts";
 import { initPreviewWindow } from "./preview.ts";
 import { log } from "../utils/log.ts";
 import "../styles/content.css";
-
-/**
- * 拡張機能のメインエントリポイント
- */
-interface Settings {
-  subcategory: boolean;
-  preview: boolean;
-}
-
-/**
- * 拡張機能の設定を取得
- */
-async function loadSettings(): Promise<Settings> {
-  return new Promise((resolve) => {
-    chrome.storage.sync.get(["subcategory", "preview"], (result) => {
-      resolve({
-        subcategory: result.subcategory ?? true,
-        preview: result.preview ?? true,
-      });
-    });
-  });
-}
+import { loadSettings } from "../utils/settings.ts";
 
 async function initEsaPremix(): Promise<void> {
   try {
