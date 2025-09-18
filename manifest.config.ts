@@ -24,5 +24,5 @@ export default defineManifest({
   background: {
     service_worker: "src/background/main.ts",
   },
-  permissions: ["activeTab"],
+  permissions: ["activeTab", "storage"],
 });

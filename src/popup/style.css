@@ -1,99 +1,56 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 450px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Lato, Arial, Emoji, "ヒラギノ角ゴPro W3", HiraKakuPro-W3, "ヒラギノ角ゴ W3", "Hiragino Kaku Gothic Pro", "Hiragino Sans", メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    width: 320px;
+    max-height: 480px;
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-.logo.crx:hover {
-  filter: drop-shadow(0 0 2em #f2bae4aa);
+.popup-header {
+    background-color: rgb(10, 155, 148);
+    padding: 4px;
+    margin: 0px;
+    height: 32px;
+    text-align: center;
 }
 
-.card {
-  padding: 2em;
+.popup-header h1 {
+    margin: auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+.popup-container {
+    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.setting-item {
+    margin-bottom: 1rem;
+    padding: 4px 0px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.control-label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.help-block {
+    margin: 0.25rem 0 0 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.3;
 }
