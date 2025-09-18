@@ -6,15 +6,38 @@ import "../styles/content.css";
 /**
  * 拡張機能のメインエントリポイント
  */
+interface Settings {
+  subcategory: boolean;
+  preview: boolean;
+}
+
+/**
+ * 拡張機能の設定を取得
+ */
+async function loadSettings(): Promise<Settings> {
+  return new Promise((resolve) => {
+    chrome.storage.sync.get(["subcategory", "preview"], (result) => {
+      resolve({
+        subcategory: result.subcategory ?? true,
+        preview: result.preview ?? true,
+      });
+    });
+  });
+}
+
 async function initEsaPremix(): Promise<void> {
   try {
     log("Starting initialization");
 
-    // ファイラー型カテゴリ表示を初期化
-    await initCategoryFiler(window.location.hash);
+    const settings = await loadSettings();
 
-    // プレビューペイン機能を初期化
-    initPreviewWindow();
+    if (settings.subcategory) {
+      await initCategoryFiler(window.location.hash);
+    }
+
+    if (settings.preview) {
+      initPreviewWindow();
+    }
 
     log("Initialization completed");
   } catch (error) {
@@ -36,8 +59,31 @@ function waitForDOMReady(): Promise<void> {
 }
 
 /**
- * メイン処理
+ * メッセージハンドラ: URLが変更された際の再初期化処理
  */
+function handleRuntimeMessage(
+  message: any,
+  _sender: chrome.runtime.MessageSender,
+  sendResponse: (response: any) => void,
+): boolean {
+  (async () => {
+    try {
+      if (!message.url) {
+        sendResponse({ success: false });
+        return;
+      }
+
+      log("Received message to reinitialize with URL:" + message.url);
+      await initEsaPremix();
+      sendResponse({ success: true });
+    } catch (error) {
+      console.error("Failed to reinitialize:", error);
+      sendResponse({ success: false });
+    }
+  })();
+  return true; // 非同期レスポンスを示す
+}
+
 async function main() {
   // DOMの準備完了を待つ
   await waitForDOMReady();
@@ -46,28 +92,7 @@ async function main() {
   await initEsaPremix();
 }
 
-chrome.runtime.onMessage.addListener(
-  (message: any, _sender, sendResponse): boolean => {
-    (async () => {
-      try {
-        if (!message.url) {
-          sendResponse({ success: false });
-        }
-        log(
-          "Received message to reinitialize category filer with URL:" +
-            message.url,
-        );
-        await initCategoryFiler(message.url);
-        await initPreviewWindow();
-        sendResponse({ success: true });
-      } catch (error) {
-        console.error("Failed to initialize category filer:", error);
-        sendResponse({ success: false });
-      }
-    })();
-    return true; // 非同期レスポンスを示す
-  },
-);
+chrome.runtime.onMessage.addListener(handleRuntimeMessage);
 
 // 実行開始
 main();
