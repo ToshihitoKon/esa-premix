@@ -88,45 +88,14 @@
 }
 
 .esa-premix-preview-content {
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85%;
     background: white;
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-}
-
-.esa-premix-preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #e1e5e9;
-    background: #f8f9fa;
-    flex-shrink: 0;
-}
-
-.esa-premix-preview-header h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: #24292f;
-}
-
-.esa-premix-preview-close {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.esa-premix-preview-close:hover {
-    background: #e1e5e9;
 }
 
 .esa-premix-preview-iframe {

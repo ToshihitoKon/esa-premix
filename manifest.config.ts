@@ -6,12 +6,16 @@ export default defineManifest({
   name: pkg.name,
   version: pkg.version,
   icons: {
-    48: "public/logo.png",
+    32: "public/logo_32.png",
+    64: "public/logo_64.png",
+    128: "public/logo_128.png",
   },
   host_permissions: ["https://*.esa.io/*"],
   action: {
     default_icon: {
-      48: "public/logo.png",
+      32: "public/logo_32.png",
+      64: "public/logo_64.png",
+      128: "public/logo_128.png",
     },
     default_popup: "src/popup/index.html",
   },

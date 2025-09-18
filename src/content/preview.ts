@@ -60,10 +60,6 @@ function createPreviewWindowHTML() {
   return `
     <div class="${preview_window_class}">
       <div class="esa-premix-preview-content">
-        <div class="esa-premix-preview-header">
-          <h3>記事プレビュー</h3>
-          <button class="${preview_window_close_button_class}" aria-label="閉じる">✕</button>
-        </div>
         <iframe class="${preview_window_iframe_class}" src="" sandbox="allow-scripts allow-same-origin"></iframe>
       </div>
     </div>
