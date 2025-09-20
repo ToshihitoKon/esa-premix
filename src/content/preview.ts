@@ -60,7 +60,7 @@ function createPreviewWindowHTML() {
   return `
     <div class="${preview_window_class}">
       <div class="esa-premix-preview-content">
-        <iframe class="${preview_window_iframe_class}" src="" sandbox="allow-scripts allow-same-origin"></iframe>
+        <iframe class="${preview_window_iframe_class}" src=""></iframe>
       </div>
     </div>
   `;
