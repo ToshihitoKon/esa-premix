@@ -14,7 +14,7 @@ chrome.tabs.onUpdated.addListener(
     try {
       await chrome.tabs.sendMessage(tab.id!, { url: tab.url });
     } catch (error) {
-      console.error("Failed to send message to content script:", error);
+      console.log(`Failed to send message to content script: ${error}`);
     }
   },
 );
