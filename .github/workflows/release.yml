@@ -37,17 +37,28 @@ jobs:
         run: |
           NAME=$(cat package.json | jq -r .name)
           VERSION=$(cat package.json | jq -r .version)
+          FILENAME=$(ls release/esa-premix-*.zip | sort | tail -n 1)
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "filename=$NAME-$VERSION.zip" >> $GITHUB_OUTPUT
+          echo "filepath=$FILENAME" >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: release/*.zip
+          files: ${{ github.outputs.package.filename }}
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload to Chrome Web Store
+        uses: mobilefirstllc/cws-publish@latest
+        with:
+          action: "upload"
+          client_id: ${{ secrets.CLIENT }}
+          client_secret: ${{ secrets.SECRET }}
+          refresh_token: ${{ secrets.TOKEN }}
+          extension_id: ${{ secrets.EXTENSION_ID }}
+          zip_file: ${{ github.outputs.package.filename }}
