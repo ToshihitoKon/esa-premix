@@ -46,7 +46,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ github.outputs.package.filepath }}
+          files: ${{ steps.package.outputs.filepath }}
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           generate_release_notes: true
@@ -61,4 +61,4 @@ jobs:
           client_secret: ${{ secrets.SECRET }}
           refresh_token: ${{ secrets.TOKEN }}
           extension_id: ${{ secrets.EXTENSION_ID }}
-          zip_file: ${{ github.outputs.package.filepath }}
+          zip_file: ${{ steps.package.outputs.filepath }}
