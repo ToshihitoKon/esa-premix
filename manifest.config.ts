@@ -29,4 +29,5 @@ export default defineManifest({
     service_worker: "src/background/main.ts",
   },
   permissions: ["activeTab", "storage"],
+  description: "esa-premix is a Chrome extension that adds helpful UI elements to esa.io",
 });
